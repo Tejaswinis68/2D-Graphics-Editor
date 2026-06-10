@@ -21,8 +21,16 @@ void displayCanvas() {
         printf("\n");
     }
 }
+
+void drawLine(int row,int colStart, int colEnd){
+    for(int j = colStart; j <= colEnd; j++){
+        canvas[row][j]= '*';
+    }
+}
+
 int main() {
     clearCanvas();
+    drawLine(5,10,30);
     displayCanvas();
 
     return 0;
