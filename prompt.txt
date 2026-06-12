@@ -1,0 +1,24 @@
+Hey! I need some help updating my C programming university miniproject. It is a text-based graphics program where we draw shapes on a grid using asterisks. 
+
+Here is how my code is structured right now, and we cannot change these rules:
+- The grid is a global 2D array: char canvas[20][50]; (ROWS is 20, COLS is 50).
+- I have clearCanvas() which fills it with spaces, and displayCanvas() which prints it out to the terminal line by line.
+
+We just started implementing an "Object Management System" so we can add, delete, and modify shapes using a struct database array. To make this work easily inside a loop without causing argument mismatch errors, my professor wants ALL of our shape functions to take exactly 4 integer parameters, even if they don't use all of them:
+1. drawLine(int x1, int y1, int x2, int y2);
+2. drawRectangle(int x1, int y1, int x2, int y2);
+3. drawTriangle(int topX, int topY, int height, int dummy);
+4. drawCircle(int cx, int cy, int radius, int dummy); (Note: For the circle math, we use "double dx = (x - cx) / 1.5;" to fix terminal line spacing so it looks round and not stretched out!).
+
+For the object management database part, I have:
+- An enum for ShapeType (LINE, RECTANGLE, TRIANGLE, CIRCLE).
+- A struct named Shape that holds the type, the 4 parameters (p1, p2, p3, p4), and an "active" flag integer (1 for visible, 0 for deleted).
+- An array tracking everything: Shape shapeList[50]; and an integer counter called shapeCount.
+
+I also have these functions to handle the objects:
+- addObject() to save a shape to the array and set active to 1.
+- deleteObject() to switch active to 0 (a soft delete).
+- modifyObject() to update the coordinates of a shape.
+- renderScene() which clears the canvas, loops through the shapeList up to shapeCount, checks if the shape is active, and calls the matching draw function passing its 4 parameters.
+
+When I ask you to help me fix errors, write test code in main(), or add new features, please make sure your code completely follows this setup. Also, make sure you don't use the variable 'i' for loops inside the nested shape functions so it doesn't conflict with the 'i' loop inside renderScene()! Keep the code simple, clean, and beginner-friendly.
